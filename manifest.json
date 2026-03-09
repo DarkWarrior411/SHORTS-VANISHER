@@ -1,0 +1,19 @@
+{
+  "manifest_version": 3,
+  "name": "Shorts Vanisher",
+  "version": "1.0",
+  "description": "Vanishes YouTube Shorts from the Home Page.",
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": "icon.png"
+  },
+  "permissions": [
+    "storage"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["*://www.youtube.com/*"],
+      "js": ["content.js"]
+    }
+  ]
+}
