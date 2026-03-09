@@ -1,0 +1,2 @@
+# SHORTS-VANISHER
+Shorts Vanisher is a lightweight, gamified Chrome Extension designed to help users avoid the distraction of YouTube Shorts. In its initial Phase 1 release, it specifically targets and removes the horizontal Shorts shelves from the YouTube home page. It features a compact, dark-themed popup UI that tracks exactly how many Shorts sections have been vanished during the session and includes a quick toggle switch to disable the blocking at any time.
