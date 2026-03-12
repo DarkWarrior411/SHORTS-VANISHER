@@ -2,7 +2,7 @@
 
 A lightweight Chrome Extension that declutters your YouTube experience by hiding the highly distracting Shorts shelves. 
 
-Currently in **Phase 1**, this extension strictly targets the YouTube Home Page (`/`) to keep your feed focused on standard, long-form video content. It also features a gamified stat tracker to show you exactly how many distractions you've avoided.
+Currently in **Phase 2**, this extension strictly targets the YouTube Home Page (`/`) to keep your feed focused on standard, long-form video content. It also features a gamified stat tracker to show you exactly how many distractions you've avoided.
 
 ## Features
 * **Home Page Purge:** Automatically detects and hides the horizontal `ytd-rich-shelf-renderer` elements containing Shorts.
@@ -24,6 +24,5 @@ Currently in **Phase 1**, this extension strictly targets the YouTube Home Page 
 * `popup.html` / `popup.css` / `popup.js`: The UI and logic for the extension's dropdown menu and stat tracker.
 
 ## Upcoming Phases
-* **Phase 2:** Remove Shorts from the left-hand navigation sidebar.
 * **Phase 3:** Remove Shorts from the Subscriptions feed and Channel pages.
 * **Phase 4:** Auto-redirect direct `/shorts/` URLs to the standard video player.
