@@ -1,4 +1,4 @@
-# Shorts Vanisher 🚫📱
+# <img src="icon.png" width="35" align="top"> Shorts Vanisher
 
 A lightweight Chrome Extension that declutters your YouTube experience by hiding the highly distracting Shorts shelves. 
 
