@@ -26,22 +26,24 @@ chrome.storage.onChanged.addListener((changes) => {
 function initObserver() {
     const observer = new MutationObserver(() => {
         if (isActive) {
-            if (window.location.pathname === "/") hideHomeShorts()
+            hideShelves()
             hideSidebarShorts()
+            hideChannelTabs()
         }
     })
     observer.observe(document.body, { childList: true, subtree: true })
     
-    if (window.location.pathname === "/") hideHomeShorts()
+    hideShelves()
     hideSidebarShorts()
+    hideChannelTabs()
 }
 
-function hideHomeShorts() {
-    const elements = document.querySelectorAll('ytd-rich-section-renderer:not(.vanished)')
+function hideShelves() {
+    const shelves = document.querySelectorAll('ytd-rich-section-renderer:not(.vanished), ytd-reel-shelf-renderer:not(.vanished)')
     
-    elements.forEach(el => {
-        const isShorts = el.querySelector('ytd-rich-shelf-renderer[is-shorts]')
-        if (isShorts) {
+    shelves.forEach(el => {
+        const isShortsShelf = el.tagName.toLowerCase() === 'ytd-reel-shelf-renderer' || el.querySelector('ytd-rich-shelf-renderer[is-shorts]')
+        if (isShortsShelf) {
             el.style.display = 'none'
             el.classList.add('vanished')
             updateCounts()
@@ -57,6 +59,18 @@ function hideSidebarShorts() {
         if (container && !container.classList.contains('vanished')) {
             container.style.display = 'none'
             container.classList.add('vanished')
+            updateCounts()
+        }
+    })
+}
+
+function hideChannelTabs() {
+    const tabs = document.querySelectorAll('yt-tab-shape:not(.vanished)')
+    
+    tabs.forEach(tab => {
+        if (tab.innerText.trim() === 'Shorts') {
+            tab.style.display = 'none'
+            tab.classList.add('vanished')
             updateCounts()
         }
     })
