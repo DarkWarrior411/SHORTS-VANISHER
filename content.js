@@ -6,7 +6,10 @@ chrome.storage.local.get(["isActive", "sessionCount", "totalCount"], (data) => {
     if (data.isActive !== undefined) isActive = data.isActive
     if (data.sessionCount !== undefined) sessionCount = data.sessionCount
     if (data.totalCount !== undefined) totalCount = data.totalCount
-    if (isActive) initObserver()
+    if (isActive) {
+        initObserver()
+        checkAndRedirect()
+    }
 })
 
 chrome.storage.onChanged.addListener((changes) => {
@@ -14,6 +17,7 @@ chrome.storage.onChanged.addListener((changes) => {
         isActive = changes.isActive.newValue
         if (isActive) {
             initObserver()
+            checkAndRedirect()
         } else {
             showAll()
         }
@@ -22,6 +26,17 @@ chrome.storage.onChanged.addListener((changes) => {
         sessionCount = 0
     }
 })
+
+document.addEventListener('yt-navigate-finish', () => {
+    if (isActive) checkAndRedirect()
+})
+
+function checkAndRedirect() {
+    if (window.location.pathname.startsWith('/shorts/')) {
+        const videoId = window.location.pathname.split('/shorts/')[1]
+        window.location.replace(`https://www.youtube.com/watch?v=${videoId}`)
+    }
+}
 
 function initObserver() {
     const observer = new MutationObserver(() => {
