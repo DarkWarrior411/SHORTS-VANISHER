@@ -1,14 +1,15 @@
 # <img src="icon.png" width="35" align="top"> Shorts Vanisher
 
-A lightweight Chrome Extension that declutters your YouTube experience by hiding the highly distracting Shorts shelves. 
+A lightweight, gamified Chrome Extension that declutters your YouTube experience by hiding highly distracting Shorts. 
 
-Currently in **Phase 3**, this extension strictly targets the YouTube Home Page (`/`) to keep your feed focused on standard, long-form video content. It also features a gamified stat tracker to show you exactly how many distractions you've avoided.
+This extension completely scrubs YouTube of Shorts, targeting the Home Page, Navigation Sidebars, Subscriptions feed, and Creator Channels to keep your feed focused on standard, long-form video content. It also features a built-in stat tracker to show you exactly how many distractions you've successfully avoided.
 
 ## Features
-* **Home Page Purge:** Automatically detects and hides the horizontal `ytd-rich-shelf-renderer` elements containing Shorts.
-* **Live Stat Tracker:** A sleek popup UI keeps a running tally of how many Shorts shelves have been removed from your feed.
-* **Quick Toggle:** An easily accessible on/off switch in the popup to pause the extension without navigating to Chrome's extension manager.
-* **Performance Optimized:** Uses a targeted `MutationObserver` to remove elements seamlessly as YouTube dynamically loads content.
+* **Complete Shorts Purge:** Automatically detects and hides horizontal Shorts shelves, sidebar navigation links, and the dedicated Shorts tab on creator profiles.
+* **Smart URL Redirect:** Intercepts direct `/shorts/` links and instantly redirects them to the standard, non-swipeable YouTube video player.
+* **Live Stat Tracker:** A sleek, dark-themed popup UI keeps a running tally of how many Shorts have been vanished during your current session, along with a lifetime total.
+* **Quick Toggle:** An easily accessible on/off switch in the popup allows you to pause the extension instantly without navigating to Chrome's extension manager.
+* **Performance Optimized:** Uses a targeted `MutationObserver` to remove elements seamlessly and efficiently as YouTube dynamically loads content, preventing layout shifts.
 
 ## Installation (Developer Mode)
 1. Clone or download this repository to your local machine.
@@ -20,8 +21,11 @@ Currently in **Phase 3**, this extension strictly targets the YouTube Home Page 
 
 ## Project Structure
 * `manifest.json`: Extension configuration and permissions.
-* `content.js`: The script injected into YouTube to find and hide Shorts.
-* `popup.html` / `popup.css` / `popup.js`: The UI and logic for the extension's dropdown menu and stat tracker.
+* `content.js`: The script injected into YouTube to find, hide Shorts, and handle URL redirects.
+* `popup.html` / `popup.css` / `popup.js`: The UI and logic for the extension's dropdown menu and stat trackers.
 
-## Upcoming Phases
-* **Phase 4:** Auto-redirect direct `/shorts/` URLs to the standard video player.
+## Implemented Phases
+* **Phase 1:** Purged horizontal Shorts shelves from the YouTube Home Page.
+* **Phase 2:** Removed dedicated Shorts links from both the expanded and collapsed left-hand navigation sidebars.
+* **Phase 3:** Scrubbed Shorts from the Subscriptions feed and removed the "Shorts" tab from creator Channel pages.
+* **Phase 4:** Added a navigation listener to auto-redirect direct `/shorts/` URLs to the standard `/watch?v=` video player format.
